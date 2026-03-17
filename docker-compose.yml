@@ -1,0 +1,20 @@
+services:
+  api:
+    build:
+      context: ./api-node
+      dockerfile: Dockerfile.node
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - scraper
+    restart: unless-stopped
+
+  scraper:
+    build:
+      context: ./worker_python
+      dockerfile: Dockerfile.python
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

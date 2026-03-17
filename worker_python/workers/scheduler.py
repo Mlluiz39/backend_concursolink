@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from main import main
+from worker_python.main import main
 
 scheduler = BlockingScheduler()
 
